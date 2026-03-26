@@ -11,6 +11,7 @@ A simple console-based banking system built in Java to demonstrate core **Object
 * Deposit money
 * Withdraw money
 * Check account balance
+* Transfer money between accounts
 * View transaction history
 * Multi-user support (multiple accounts managed in memory)
 
@@ -82,18 +83,6 @@ src/
 
 ---
 
-## 🔄 Example Flow
-
-```
-1. Create Account
-2. Login
-3. Deposit
-4. Withdraw
-5. View Transactions
-6. Logout
-```
-
----
 
 ## 🚧 Future Improvements
 
