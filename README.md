@@ -87,7 +87,6 @@ src/
 ## 🚧 Future Improvements
 
 * Add account **PIN authentication**
-* Implement **money transfer between accounts**
 * Persist data using **file storage or database**
 * Add a graphical user interface (GUI)
 
