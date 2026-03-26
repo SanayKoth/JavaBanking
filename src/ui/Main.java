@@ -1,6 +1,8 @@
 package ui;
 import model.*;
 import service.Bank;
+
+import java.lang.annotation.Target;
 import java.util.*;
 public class Main {
     public static void main(String args[]){
@@ -35,7 +37,8 @@ public class Main {
                         System.out.println("2. Withdraw");
                         System.out.println("3. Check Balance");
                         System.out.println("4. View Transactions");
-                        System.out.println("5. Logout");
+                        System.out.println("5. E-transfer to another account");
+                        System.out.println("6. Logout");
                         //each option while logged in
                         int option = sc.nextInt();
 
@@ -65,7 +68,18 @@ public class Main {
                             for(Transaction t : current.getTransactions()){
                                 System.out.println(t);
                             }
-                        } else if(option == 5){
+                        } else if (option == 5) {
+                            sc.nextLine();
+                            System.out.println("What is the account num you would like to transfer to?");
+                            String target = sc.nextLine();
+                            System.out.println("How much would you like to transfer?");
+                            double amount = sc.nextDouble();
+                            if(bank.eTransfer(amount, target)){
+                                System.out.println("Transfer successful.");
+                            } else {
+                                System.out.println("Transfer failed.");
+                            }
+                        } else if(option == 6){
                             bank.logout();
                             break;
                         }

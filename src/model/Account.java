@@ -19,7 +19,8 @@ public class Account {
             transactions.add(new Transaction(//log transactions
                     "DEPOSIT",
                     amount,
-                    LocalDateTime.now().toString()
+                    LocalDateTime.now().toString(),
+                    "Cash deposit"
             ));
             return true;
         }else {
@@ -32,7 +33,8 @@ public class Account {
             transactions.add(new Transaction(//log transactions
                     "WITHDRAW",
                     amount,
-                    LocalDateTime.now().toString()
+                    LocalDateTime.now().toString(),
+                    "Cash withdraw"
             ));
             return true;
         }else{

@@ -1,5 +1,7 @@
 package service;
 import model.Account;
+import model.Transaction;
+
 import java.util.*;
 
 public class Bank {
@@ -39,5 +41,32 @@ public class Bank {
     //Getter for current account
     public Account getCurrentAccount(){
         return currentAccount;
+    }
+    public Boolean eTransfer(double amt, String targetAccNum){
+        Account target = accounts.get(targetAccNum);
+        if(currentAccount == null){
+            return false;
+        } else if (target == null) {
+            return false;
+        } else if (target == currentAccount){
+            return false;
+        } else if (amt<0) {
+            return false;
+        } else if(currentAccount.getBalance() < amt){
+            return false; // insufficient funds
+        }
+        //do the transfer
+        currentAccount.withdraw(amt);
+        target.deposit(amt);
+        String time = java.time.LocalDateTime.now().toString();
+
+        currentAccount.getTransactions().add(
+                new Transaction("TRANSFER_OUT", amt, time, "To: " + target.getAccountNumber())
+        );
+
+        target.getTransactions().add(
+                new Transaction("TRANSFER_IN", amt, time, "From: " + currentAccount.getAccountNumber())
+        );
+        return true;
     }
 }
